@@ -74,7 +74,6 @@ typedef void(^requestCompletion)(NSDictionary *data, NSError *error);
                 [[NSNotificationCenter defaultCenter] postNotificationName:DATA_READY_NOTIFICATION object:nil];
             }else{
                 if ([self loadFileFromCacheLibraryWithName:@"posts.cache"]){
-                   // self.entries = [NSDictionar ][self loadFileFromCacheLibraryWithName:@"posts.cache"];
                     self.entries = [self parseData:[NSKeyedUnarchiver unarchiveObjectWithData:[self loadFileFromCacheLibraryWithName:@"posts.cache"]]];
                     [[NSNotificationCenter defaultCenter] postNotificationName:DATA_READY_NOTIFICATION object:nil];
                 }else{
