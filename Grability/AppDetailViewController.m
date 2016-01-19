@@ -41,7 +41,7 @@
 }
 
 - (IBAction)back:(id)sender {
-    [self.navigationController popViewControllerAnimated:true];
+    [self performSegueWithIdentifier:@"fromAppDetailToAppList" sender:self];
 }
 
 - (IBAction)downloadApp:(id)sender {

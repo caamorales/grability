@@ -20,6 +20,11 @@
     [super viewDidLoad];
 }
 
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    [self.tableView reloadData];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -65,7 +70,7 @@
     UILabel *lbl = [[UILabel alloc] initWithFrame:frame];
     lbl.text = @"Categorías";
     lbl.textAlignment = NSTextAlignmentCenter;
-    lbl.font = [UIFont preferredFontForTextStyle:UIFontTextStyleTitle1];
+    lbl.font = [UIFont systemFontOfSize:27 weight:UIFontWeightLight];
     [footer addSubview:lbl];
     lbl.backgroundColor = [UIColor whiteColor];
     footer.contentView.backgroundColor = [UIColor whiteColor];

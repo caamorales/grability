@@ -198,7 +198,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="250" id="yoV-kT-kku"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="27"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -226,6 +226,8 @@
                         <outlet property="tableView" destination="m51-gv-z5q" id="Kcf-VA-meq"/>
                         <outlet property="titleLabel" destination="ToD-ME-xVi" id="W1r-I5-fCC"/>
                         <segue destination="gf1-u0-HKT" kind="show" identifier="toAppDetail" id="leR-lU-BIg"/>
+                        <segue destination="fXo-IY-dE3" kind="show" identifier="fromAppListToTableCategories" id="EcR-Se-6n3"/>
+                        <segue destination="Qaz-sX-lTA" kind="show" identifier="fromAppListToCollectionCategories" id="9YB-WA-q3D"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wJl-EW-viJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -250,7 +252,7 @@
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="438" id="lMM-Gf-NCH"/>
                                     <constraint firstAttribute="width" constant="250" id="whG-VY-gQp"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="27"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="default">
@@ -385,6 +387,7 @@
                         <outlet property="nameLabel" destination="xcX-Qa-DEd" id="0yA-Ra-Gcc"/>
                         <outlet property="priceLabel" destination="rCd-3N-gvF" id="1G0-YM-7hR"/>
                         <outlet property="summaryTextView" destination="0ez-dX-8YW" id="wSh-oe-mM8"/>
+                        <segue destination="ewQ-bA-tbR" kind="show" identifier="fromAppDetailToAppList" id="SA8-hM-rYQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Je0-1e-c2j" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -450,7 +453,7 @@
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Categorías" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9n6-E3-FcP">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
-                                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="27"/>
                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
@@ -500,6 +503,8 @@
         <image name="BackButton" width="40" height="40"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="tJT-F0-2Rg"/>
+        <segue reference="EcR-Se-6n3"/>
+        <segue reference="SA8-hM-rYQ"/>
+        <segue reference="9YB-WA-q3D"/>
     </inferredMetricsTieBreakers>
 </document>

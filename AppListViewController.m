@@ -65,7 +65,11 @@
 }
 
 - (IBAction)backButtonPressed:(id)sender {
-    [self.navigationController popViewControllerAnimated:true];
+    [self performSegueWithIdentifier:[self segueNameForCurrentDevice] sender:self];
+}
+
+- (NSString *)segueNameForCurrentDevice{
+    return [self isiPad] ? @"fromAppListToCollectionCategories" : @"fromAppListToTableCategories";
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
@@ -75,6 +79,16 @@
         dvc.appEntry = [Model sharedModel].filteredEntries[currentIndexPath.row];
     }
 
+}
+
+- (BOOL) isiPad
+{
+    static BOOL isIPad = NO;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        isIPad = [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad;
+    });
+    return isIPad;
 }
 
 @end
