@@ -11,6 +11,7 @@
 #import "Constants.h"
 
 @interface ViewController ()
+@property (weak, nonatomic) IBOutlet UIView *networkErrorView;
 
 @end
 
@@ -19,15 +20,26 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [Model sharedModel];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dataReady) name:DATA_READY_NOTIFICATION object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dataReady:) name:DATA_READY_NOTIFICATION object:nil];
+    self.networkErrorView.hidden = true;
 }
 
-- (void)dataReady{
-    if ([self isiPad]){
-        [self performSegueWithIdentifier:@"toCollectionView" sender:self];
+- (void)dataReady:(NSNotification *) notification{
+    if (!notification.userInfo[@"error"]) {
+        if ([self isiPad]){
+            [self performSegueWithIdentifier:@"toCollectionView" sender:self];
+        }else{
+            [self performSegueWithIdentifier:@"toTableView" sender:self];
+        }
     }else{
-        [self performSegueWithIdentifier:@"toTableView" sender:self];
+        [[Model sharedModel] downloadData];
+        self.networkErrorView.hidden = false;
+        
     }
+}
+
+- (IBAction)tryAgain:(id)sender {
+    self.networkErrorView.hidden = true;
 }
 
 - (void)didReceiveMemoryWarning {

@@ -73,8 +73,15 @@ typedef void(^requestCompletion)(NSDictionary *data, NSError *error);
             
                 [[NSNotificationCenter defaultCenter] postNotificationName:DATA_READY_NOTIFICATION object:nil];
             }else{
-                self.entries = nil;
-                [[NSNotificationCenter defaultCenter] postNotificationName:DATA_READY_NOTIFICATION object:nil userInfo:error ? @{@"error": error.localizedDescription} : nil];
+                if ([self loadFileFromCacheLibraryWithName:@"posts.cache"]){
+                   // self.entries = [NSDictionar ][self loadFileFromCacheLibraryWithName:@"posts.cache"];
+                    self.entries = [self parseData:[NSKeyedUnarchiver unarchiveObjectWithData:[self loadFileFromCacheLibraryWithName:@"posts.cache"]]];
+                    [[NSNotificationCenter defaultCenter] postNotificationName:DATA_READY_NOTIFICATION object:nil];
+                }else{
+                    self.entries = nil;
+                    [[NSNotificationCenter defaultCenter] postNotificationName:DATA_READY_NOTIFICATION object:nil userInfo:error ? @{@"error": error.localizedDescription} : nil];
+                }
+
             }
             
         }];
@@ -140,6 +147,7 @@ typedef void(^requestCompletion)(NSDictionary *data, NSError *error);
 
 - (void)saveImageToCacheLibrary:(UIImage*)image name:(NSString *) name
 {
+    name = [NSString stringWithFormat:@"%@%@",name,@".icon"];
     if (image != nil)
     {
         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory,
@@ -154,6 +162,7 @@ typedef void(^requestCompletion)(NSDictionary *data, NSError *error);
 
 - (UIImage*)loadImageFromCacheLibraryWithName:(NSString *)name
 {
+    name = [NSString stringWithFormat:@"%@%@",name,@".icon"];
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory,
                                                          NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];

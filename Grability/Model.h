@@ -22,4 +22,6 @@
 
 - (void)saveImage:(UIImage *) image AppID:(NSString *) appID;
 - (UIImage *)loadImageWithAppID:(NSString *) appID;
+
+- (void)downloadData;
 @end

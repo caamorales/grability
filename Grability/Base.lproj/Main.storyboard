@@ -24,15 +24,44 @@
                                 <color key="textColor" red="0.0" green="0.61960784310000006" blue="0.88235294119999996" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n18-DW-dUg" userLabel="Network Error View">
+                                <rect key="frame" x="180" y="360" width="240" height="60"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uyb-gf-aBk">
+                                        <rect key="frame" x="83" y="29" width="75" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                        <state key="normal" title="Try Again">
+                                            <color key="titleColor" red="0.0" green="0.61960784313725492" blue="0.88235294117647056" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="tryAgain:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TtT-7v-gbO"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Network Error..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yAc-js-Lmf">
+                                        <rect key="frame" x="60" y="0.0" width="120" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="T7W-pP-F9Q"/>
+                                    <constraint firstAttribute="width" constant="240" id="eqv-SR-C8F"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Jnq-Jc-2fp" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Myf-Et-6nX"/>
+                            <constraint firstItem="n18-DW-dUg" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="X7e-ym-531"/>
+                            <constraint firstItem="n18-DW-dUg" firstAttribute="top" secondItem="Jnq-Jc-2fp" secondAttribute="bottom" constant="38.5" id="aqU-EF-w7e"/>
                             <constraint firstItem="Jnq-Jc-2fp" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="koc-UC-t1I"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="R3K-cq-YYK"/>
                     <connections>
+                        <outlet property="networkErrorView" destination="n18-DW-dUg" id="jZr-yZ-Fcy"/>
                         <segue destination="fXo-IY-dE3" kind="show" identifier="toTableView" id="OBK-hU-V4b"/>
                         <segue destination="Qaz-sX-lTA" kind="show" identifier="toCollectionView" id="3mG-tO-YqM"/>
                     </connections>
